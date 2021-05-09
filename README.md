@@ -109,5 +109,24 @@ bgupta@C02CC1EGMD6M gitops-lab % flux create kustomization busybox \
 bgupta@C02CC1EGMD6M gitops-lab % 
 ```
 
-Commit and push the code to GitHub.
+Commit and push the code to GitHub. Now busybox pod should be running in busybox namespace.
+
+```
+bgupta@C02CC1EGMD6M gitops-lab % flux get kustomization -A
+NAMESPACE       NAME            READY   MESSAGE                                                                 REVISION                                        SUSPENDED 
+flux-system     busybox         True    Applied revision: master/8609c5d8fca1f22f86f621197f13085445a0d302       master/8609c5d8fca1f22f86f621197f13085445a0d302 False    
+flux-system     flux-system     True    Applied revision: master/8609c5d8fca1f22f86f621197f13085445a0d302       master/8609c5d8fca1f22f86f621197f13085445a0d302 False    
+bgupta@C02CC1EGMD6M gitops-lab % kgns
+NAME              STATUS   AGE
+busybox           Active   8s
+default           Active   20d
+flux-system       Active   27m
+kube-node-lease   Active   20d
+kube-public       Active   20d
+kube-system       Active   20d
+bgupta@C02CC1EGMD6M gitops-lab %
+```
+
+
+
 
