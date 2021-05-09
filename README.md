@@ -127,6 +127,7 @@ kube-system       Active   20d
 bgupta@C02CC1EGMD6M gitops-lab %
 ```
 
+Repeat the same for the do-prod cluster. If you run into issues, check the outputs and configurations for gitrepository and kustomizations.
 
 
 
