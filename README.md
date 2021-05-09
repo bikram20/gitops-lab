@@ -129,5 +129,30 @@ bgupta@C02CC1EGMD6M gitops-lab %
 
 Repeat the same for the do-prod cluster. If you run into issues, check the outputs and configurations for gitrepository and kustomizations.
 
+## Customize busybox manifest for dev vs. prod
+If I make any change to busybox.yaml (./busybox folder), those will be picked up by Flux on both dev and prod clusters and applied to both clusters. We do not want this type of behavior, and instead what to control dev vs. prod separately, all while keeping same same base manifest. That is the core use case of using kustomize.
+
+Let us say we want the busybox pod in dev cluster to instead use busybox-glibc (another image), and have a restart policy to Never. By keeping a structure where we can customize only dev environment, it make it easy to keep the base manifests untouched.
+
+```
+bgupta@C02CC1EGMD6M overlays % diff prod/kustomization.yaml dev/kustomization.yaml 
+2a3
+> 
+4c5,13
+<   - ../../base
+---
+> - ../../base
+> 
+> images:
+> - name: busybox
+>   newName: busybox
+>   newTag: glibc-stable
+> 
+> patchesStrategicMerge:
+> - busybox.yaml
+bgupta@C02CC1EGMD6M overlays % 
+```
+
+
 
 
