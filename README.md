@@ -132,7 +132,7 @@ Repeat the same for the do-prod cluster. The path must point to busybox/overlays
 ## Customize busybox manifest for dev vs. prod
 If I make any change to busybox.yaml (./busybox folder), those will be picked up by Flux on both dev and prod clusters and applied to both clusters. We do not want this type of behavior, and instead what to control dev vs. prod separately, all while keeping same same base manifest. That is the core use case of using kustomize.
 
-Let us say we want the busybox pod in dev cluster to instead use busybox-glibc (another image). By keeping a structure where we can customize only dev environment, it make it easy to keep the base manifests untouched.
+Let us say we want the busybox pod in dev cluster to instead use busybox:1.33.1 (another image). By keeping a structure where we can customize only dev environment, it make it easy to keep the base manifests untouched.
 
 ```
 bgupta@C02CC1EGMD6M overlays % diff prod/kustomization.yaml dev/kustomization.yaml 
@@ -146,7 +146,7 @@ bgupta@C02CC1EGMD6M overlays % diff prod/kustomization.yaml dev/kustomization.ya
 > images:
 > - name: busybox
 >   newName: busybox
->   newTag: glibc-stable
+>   newTag: 1.33.1
 bgupta@C02CC1EGMD6M overlays % 
 ```
 
