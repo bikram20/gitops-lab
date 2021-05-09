@@ -101,7 +101,7 @@ First, tell Flux on how (kustomization) to install. We are going to use the SAME
 ```
 bgupta@C02CC1EGMD6M gitops-lab % flux create kustomization busybox \
   --source=flux-system \
-  --path=“./busybox \
+  --path=“./busybox" \
   --prune=true \
   --validation=client \
   --interval=5m \
