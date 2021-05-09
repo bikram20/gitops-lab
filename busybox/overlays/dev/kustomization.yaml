@@ -7,4 +7,4 @@ bases:
 images:
 - name: busybox
   newName: busybox
-  newTag: glibc-stable
+  newTag: 1.33.1
