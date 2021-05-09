@@ -11,9 +11,13 @@ terraform init
 terraform plan
 terraform apply
 
+
 Note: You need to pass the DO access (secret password) token to terraform. One option is:
+
 export DIGITALOCEAN_ACCESS_TOKEN='<your secret token>'
 
+
 terraform output will show the cluster id. Build the kubeconfig.
+
 doctl kubernetes cluster kubeconfig save <cluster_id>
 
