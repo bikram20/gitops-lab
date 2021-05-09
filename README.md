@@ -96,33 +96,11 @@ And Flux will reconcile the cluster to the source-of-truth (Git). Even if we mak
 FROM HERE ON, WE WILL MAKE ALL CHANGES TO THE CLUSTERS THROUGH GIT REPO.
 
 ## Create a busybox pod
-First, tell Flux on how (kustomization) to install.
+First, tell Flux on how (kustomization) to install. We are going to use the SAME git repo (flux-system <-> gitsops-lab)
 
 ```
 bgupta@C02CC1EGMD6M gitops-lab % flux create kustomization busybox \
-  --source=gitops-lab \
-  --path=“./busybox \
-  --prune=true \
-  --validation=client \
-  --interval=5m \
-  --export                                                 
----
-apiVersion: kustomize.toolkit.fluxcd.io/v1beta1
-kind: Kustomization
-metadata:
-  name: busybox
-  namespace: flux-system
-spec:
-  interval: 5m0s
-  path: ./“./busybox
-  prune: true
-  sourceRef:
-    kind: GitRepository
-    name: gitops-lab
-  validation: client
-
-bgupta@C02CC1EGMD6M gitops-lab % flux create kustomization busybox \
-  --source=gitops-lab \
+  --source=flux-system \
   --path=“./busybox \
   --prune=true \
   --validation=client \
