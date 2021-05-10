@@ -3,8 +3,6 @@
 source demo-magic.sh
 clear
 
-GITHUB_USER=bikram20
-GITHUB_TOKEN=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
 
 if false; then
 # ... Code I want to skip here ...
